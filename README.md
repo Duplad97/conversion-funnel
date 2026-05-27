@@ -78,9 +78,34 @@ src/
 ## Scripts
 
 - npm run dev: Start Vite dev server
+- npm run test: Start Vitest in watch mode
+- npm run test:run: Run Vitest once (CI mode)
 - npm run type-check: Run Vue + TypeScript checks
 - npm run build-only: Build production assets
 - npm run build: Type-check and build
 - npm run preview: Preview production build locally
 - npm run lint: Run oxlint and eslint
 - npm run format: Run Prettier on src
+
+## Testing
+
+Component UI tests are powered by Vitest and Vue Test Utils.
+
+Run tests in watch mode:
+
+```sh
+npm run test
+```
+
+Run tests once:
+
+```sh
+npm run test:run
+```
+
+## Continuous Integration
+
+GitHub Actions runs the component test suite on pushes and pull requests using:
+
+- npm ci
+- npm run test:run

@@ -1,0 +1,46 @@
+[
+  {
+    "id": "spring-lead-gen",
+    "name": "Spring Lead Gen Popup",
+    "deviceType": "desktop",
+    "steps": [
+      { "id": "teaser", "name": "Teaser", "views": 12000, "proceeds": 5100 },
+      { "id": "email-capture", "name": "Email Capture", "views": 5100, "proceeds": 1300 },
+      { "id": "offer", "name": "Offer Reveal", "views": 1300, "proceeds": 940 },
+      { "id": "confirm", "name": "Confirmation", "views": 940, "proceeds": 810 }
+    ]
+  },
+  {
+    "id": "mobile-discount-push",
+    "name": "Mobile Discount Push",
+    "deviceType": "mobile",
+    "steps": [
+      { "id": "teaser", "name": "Teaser", "views": 9800, "proceeds": 6200 },
+      { "id": "email-capture", "name": "Email Capture", "views": 6200, "proceeds": 3800 },
+      { "id": "survey", "name": "Quick Survey", "views": 3800, "proceeds": 2600 },
+      { "id": "confirm", "name": "Confirmation", "views": 2600, "proceeds": 2200 }
+    ]
+  },
+  {
+    "id": "tablet-loyalty-offer",
+    "name": "Tablet Loyalty Offer",
+    "deviceType": "tablet",
+    "steps": [
+      { "id": "teaser", "name": "Teaser", "views": 4200, "proceeds": 2100 },
+      { "id": "email-capture", "name": "Email Capture", "views": 2100, "proceeds": 780 },
+      { "id": "offer", "name": "Offer Reveal", "views": 780, "proceeds": 460 },
+      { "id": "confirm", "name": "Confirmation", "views": 460, "proceeds": 350 }
+    ]
+  },
+  {
+    "id": "checkout-saver",
+    "name": "Checkout Saver",
+    "deviceType": "desktop",
+    "steps": [
+      { "id": "teaser", "name": "Teaser", "views": 15000, "proceeds": 12000 },
+      { "id": "email-capture", "name": "Email Capture", "views": 12000, "proceeds": 9500 },
+      { "id": "offer", "name": "Offer Reveal", "views": 9500, "proceeds": 8600 },
+      { "id": "confirm", "name": "Confirmation", "views": 8600, "proceeds": 8100 }
+    ]
+  }
+]

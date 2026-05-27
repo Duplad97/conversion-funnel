@@ -1,0 +1,67 @@
+:root {
+  --bg: #f4f6f8;
+  --surface: #ffffff;
+  --border-color: #d9dee5;
+  --text-primary: #132233;
+  --text-secondary: #394d61;
+  --text-muted: #5f7184;
+  --accent-soft: #e0f3ef;
+  --accent-ink: #0f6f63;
+  --warning-soft: #f7cf97;
+
+  font-family: "IBM Plex Sans", "Segoe UI", sans-serif;
+  color: var(--text-primary);
+  background: var(--bg);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: radial-gradient(circle at top right, #ddeaf7 0%, #f4f6f8 40%);
+  min-height: 100vh;
+}
+
+#app {
+  min-height: 100vh;
+}
+
+.app-shell {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 1rem 1rem;
+}
+
+.app-bar {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: rgb(255 255 255 / 88%);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 1rem;
+}
+
+.app-bar__content {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0.95rem 1rem;
+}
+
+.app-bar h1 {
+  margin: 0;
+  font-size: 1.05rem;
+  color: var(--text-primary);
+}
+
+@media (max-width: 640px) {
+  .app-shell {
+    padding: 0 0.75rem 0.75rem;
+  }
+
+  .app-bar__content {
+    padding: 0.85rem 0.75rem;
+  }
+}

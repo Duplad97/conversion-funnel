@@ -5,6 +5,7 @@ import { useRouter } from 'vue-router'
 import CampaignList from '@/components/CampaignList.vue'
 import { getCampaigns } from '@/services/campaignService'
 import type { Campaign } from '@/types/campaign'
+import { getErrorMessage } from '@/utils/errorHandling'
 import { getCampaignMetrics } from '@/utils/funnelCalculations'
 
 const router = useRouter()
@@ -25,8 +26,11 @@ const loadCampaigns = async (): Promise<void> => {
     isLoading.value = true
     errorMessage.value = ''
     campaigns.value = await getCampaigns()
-  } catch {
-    errorMessage.value = 'Unable to load campaigns. Please refresh and try again.'
+  } catch (error: unknown) {
+    errorMessage.value = getErrorMessage(
+      error,
+      'Unable to load campaigns. Please refresh and try again.',
+    )
   } finally {
     isLoading.value = false
   }
@@ -57,7 +61,10 @@ onMounted(() => {
   <v-progress-linear v-if="isLoading" indeterminate color="primary" class="mb-4" />
 
   <v-alert v-else-if="errorMessage" color="error" variant="tonal" border="start" class="mb-4">
-    {{ errorMessage }}
+    <div class="d-flex align-center justify-space-between ga-3 flex-wrap">
+      <span>{{ errorMessage }}</span>
+      <v-btn size="small" variant="outlined" color="error" @click="loadCampaigns">Retry</v-btn>
+    </div>
   </v-alert>
 
   <CampaignList v-else :items="campaignOverview" @select="openCampaign" />

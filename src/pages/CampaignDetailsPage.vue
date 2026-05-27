@@ -2,6 +2,7 @@
 import { computed, onMounted, ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 
+import DropOffChart from '@/components/DropOffChart.vue'
 import FunnelView from '@/components/FunnelView.vue'
 import InsightPanel from '@/components/InsightPanel.vue'
 import MetricsSummary from '@/components/MetricsSummary.vue'
@@ -88,6 +89,11 @@ onMounted(() => {
     <MetricsSummary :campaign="campaign" :metrics="metrics" />
 
     <FunnelView
+      :steps="metrics.stepsWithMetrics"
+      :biggest-drop-off-step-id="metrics.biggestDropOff.stepId"
+    />
+
+    <DropOffChart
       :steps="metrics.stepsWithMetrics"
       :biggest-drop-off-step-id="metrics.biggestDropOff.stepId"
     />

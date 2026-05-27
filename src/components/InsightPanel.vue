@@ -21,8 +21,8 @@ const getInsightColor = (severity: Insight['severity']): string => {
 </script>
 
 <template>
-  <v-card rounded="lg" elevation="2">
-    <v-card-title>Insights</v-card-title>
+  <v-card class="insight-card">
+    <v-card-title class="insight-titlebar">Insights</v-card-title>
     <v-card-text class="d-grid ga-3">
       <v-alert
         v-for="insight in insights"
@@ -39,6 +39,14 @@ const getInsightColor = (severity: Insight['severity']): string => {
 </template>
 
 <style scoped>
+.insight-card {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(248, 251, 255, 0.96));
+}
+
+.insight-titlebar {
+  font-weight: 700;
+}
+
 .insight-title {
   font-weight: 700;
 }

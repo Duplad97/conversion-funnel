@@ -4,11 +4,9 @@ import { RouterView } from 'vue-router'
 
 <template>
   <v-app>
-    <v-app-bar color="primary" density="comfortable" flat>
+    <v-app-bar class="app-bar" color="primary" density="comfortable" flat>
       <v-container class="d-flex align-center px-4" fluid>
-        <v-toolbar-title class="font-weight-bold">Popup Funnel Health</v-toolbar-title>
-        <v-spacer />
-        <v-chip color="secondary" variant="tonal" size="small">Vuetify 4</v-chip>
+        <v-toolbar-title class="font-weight-bold">Conversion Funnel</v-toolbar-title>
       </v-container>
     </v-app-bar>
 
@@ -20,4 +18,9 @@ import { RouterView } from 'vue-router'
   </v-app>
 </template>
 
-<style scoped></style>
+<style scoped>
+.app-bar {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+  backdrop-filter: saturate(130%) blur(6px);
+}
+</style>

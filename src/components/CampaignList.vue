@@ -23,7 +23,7 @@ const onSelect = (campaignId: string): void => {
 </script>
 
 <template>
-  <v-row dense>
+  <v-row class="campaign-grid" dense>
     <v-col v-for="item in items" :key="item.campaign.id" cols="12" md="6" lg="4">
       <CampaignCard
         :campaign="item.campaign"
@@ -34,4 +34,8 @@ const onSelect = (campaignId: string): void => {
   </v-row>
 </template>
 
-<style scoped></style>
+<style scoped>
+.campaign-grid {
+  margin-top: -0.25rem;
+}
+</style>

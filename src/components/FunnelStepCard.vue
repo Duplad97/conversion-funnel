@@ -28,9 +28,10 @@ defineProps<Props>()
 
 <style scoped>
 .step-row td {
-  padding: 0.75rem;
+  padding: 0.85rem 0.75rem;
   font-size: 0.92rem;
   color: rgba(var(--v-theme-on-surface), 0.92);
+  border-bottom: 1px solid rgba(var(--v-theme-on-surface), 0.06);
 }
 
 .step-row--worst {
@@ -49,5 +50,6 @@ defineProps<Props>()
   gap: 0.5rem;
   color: rgba(var(--v-theme-on-surface), 0.68);
   font-size: 0.8rem;
+  flex-wrap: wrap;
 }
 </style>

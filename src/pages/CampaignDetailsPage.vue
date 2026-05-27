@@ -34,14 +34,6 @@ const insights = computed(() => {
   return generateInsights(campaign.value, metrics.value)
 })
 
-const biggestDropOffText = computed(() => {
-  if (!metrics.value) {
-    return ''
-  }
-
-  return `${metrics.value.biggestDropOff.stepName} (${(metrics.value.biggestDropOff.dropOffRate * 100).toFixed(1)}% drop-off)`
-})
-
 const loadCampaign = async (): Promise<void> => {
   isLoading.value = true
   campaign.value = await getCampaignById(campaignId.value)
@@ -59,6 +51,7 @@ onMounted(() => {
 
 <template>
   <v-btn class="mb-4" variant="text" color="primary" @click="backToCampaigns">
+    <span class="back-arrow" aria-hidden="true">&larr;</span>
     Back to campaigns
   </v-btn>
 
@@ -66,10 +59,6 @@ onMounted(() => {
 
   <section v-else-if="campaign && metrics" class="details-layout">
     <MetricsSummary :campaign="campaign" :metrics="metrics" />
-
-    <v-alert color="warning" variant="tonal" border="start" prominent>
-      Biggest drop-off: {{ biggestDropOffText }}
-    </v-alert>
 
     <FunnelView
       :steps="metrics.stepsWithMetrics"
@@ -86,6 +75,12 @@ onMounted(() => {
 <style scoped>
 .details-layout {
   display: grid;
-  gap: 0.9rem;
+  gap: 1rem;
+}
+
+.back-arrow {
+  margin-right: 0.35rem;
+  font-size: 0.95rem;
+  line-height: 1;
 }
 </style>

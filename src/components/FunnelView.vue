@@ -11,8 +11,8 @@ defineProps<Props>()
 </script>
 
 <template>
-  <v-card rounded="lg" elevation="2">
-    <v-card-title>Funnel Steps</v-card-title>
+  <v-card class="funnel-card">
+    <v-card-title class="funnel-title">Funnel Steps</v-card-title>
     <v-card-text class="pa-0">
       <v-table density="comfortable">
         <thead>
@@ -37,4 +37,22 @@ defineProps<Props>()
   </v-card>
 </template>
 
-<style scoped></style>
+<style scoped>
+.funnel-card {
+  overflow: hidden;
+}
+
+.funnel-title {
+  padding: 0.95rem 1rem;
+  font-weight: 700;
+}
+
+:deep(thead th) {
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: rgba(var(--v-theme-on-surface), 0.62);
+  background: rgba(var(--v-theme-surface-variant), 0.42);
+  border-bottom: 1px solid rgba(var(--v-theme-on-surface), 0.08);
+}
+</style>

@@ -1,7 +1,7 @@
 :root {
   font-family: Roboto, 'Segoe UI', sans-serif;
-  color: rgba(18, 27, 41, 0.96);
-  background: #f4f6f8;
+  color: #172033;
+  background: #f3f6fb;
 }
 
 * {
@@ -10,10 +10,21 @@
 
 body {
   margin: 0;
-  background: radial-gradient(circle at top right, #ddeaf7 0%, #f4f6f8 40%);
+  background:
+    radial-gradient(1200px 450px at -10% -10%, #d9ebf7 0%, transparent 65%),
+    radial-gradient(900px 380px at 115% 0%, #d7efe8 0%, transparent 60%),
+    #f3f6fb;
   min-height: 100vh;
 }
 
 #app {
   min-height: 100vh;
+}
+
+.v-application {
+  color: #172033;
+}
+
+.v-card {
+  box-shadow: 0 8px 28px rgb(15 23 42 / 4%);
 }

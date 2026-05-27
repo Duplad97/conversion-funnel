@@ -7,19 +7,36 @@ import * as directives from 'vuetify/directives'
 export default createVuetify({
   components,
   directives,
+  defaults: {
+    VCard: {
+      rounded: 'lg',
+      elevation: 0,
+      border: 'sm',
+    },
+    VAlert: {
+      rounded: 'lg',
+      border: 'start',
+      variant: 'tonal',
+    },
+    VChip: {
+      rounded: 'pill',
+    },
+  },
   theme: {
     defaultTheme: 'funnelTheme',
     themes: {
       funnelTheme: {
         dark: false,
         colors: {
-          primary: '#0f6f63',
-          secondary: '#394d61',
-          warning: '#b86f00',
-          info: '#2563eb',
-          success: '#1f8a70',
-          background: '#f4f6f8',
+          primary: '#0b7285',
+          secondary: '#334155',
+          warning: '#b45309',
+          info: '#1d4ed8',
+          success: '#0f766e',
+          error: '#b91c1c',
+          background: '#f3f6fb',
           surface: '#ffffff',
+          'surface-variant': '#e8eef5',
         },
       },
     },

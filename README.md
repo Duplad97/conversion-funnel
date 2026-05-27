@@ -1,48 +1,86 @@
-# conversion-funnel
+# Conversion Funnel
 
-This template should help get you started developing with Vue 3 in Vite.
+A small funnel analytics web application for popup campaigns.
 
-## Recommended IDE Setup
+The app helps marketers understand where users drop off in multi-step popup funnels by showing step-level performance, biggest drop-off, and deterministic recommendations.
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## Getting Started
 
-## Recommended Browser Setup
-
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
-
-## Type Support for `.vue` Imports in TS
-
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
+Install dependencies:
 
 ```sh
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+Start development server:
 
 ```sh
 npm run dev
 ```
 
-### Type-Check, Compile and Minify for Production
+Open the app at the URL printed by Vite (typically http://localhost:5173).
 
-```sh
-npm run build
+## Tech Stack
+
+- Vue 3
+- Vue Router
+- TypeScript
+- Vuetify 4
+- Vite
+
+## Features
+
+- Campaign list with campaign name, device, overall conversion, and step count
+- Campaign details page with funnel step metrics
+- Biggest drop-off detection and highlight
+- Deterministic insight panel with rule-based recommendations
+- Static JSON data source (no backend)
+
+## Data Source
+
+Campaign data is loaded from the root file:
+
+- conversion-data.json
+
+The service layer reads this file and exposes typed access methods for campaigns.
+
+## Project Structure
+
+```text
+src/
+  components/
+    CampaignCard.vue
+    CampaignList.vue
+    FunnelStepCard.vue
+    FunnelView.vue
+    InsightPanel.vue
+    MetricsSummary.vue
+  pages/
+    CampaignsPage.vue
+    CampaignDetailsPage.vue
+  plugins/
+    vuetify.ts
+  router/
+    index.ts
+  services/
+    campaignService.ts
+  types/
+    campaign.ts
+  utils/
+    funnelCalculations.ts
+    insightGenerator.ts
+    formatters.ts
+  App.vue
+  main.ts
+  style.css
 ```
 
-### Lint with [ESLint](https://eslint.org/)
+## Scripts
 
-```sh
-npm run lint
-```
+- npm run dev: Start Vite dev server
+- npm run type-check: Run Vue + TypeScript checks
+- npm run build-only: Build production assets
+- npm run build: Type-check and build
+- npm run preview: Preview production build locally
+- npm run lint: Run oxlint and eslint
+- npm run format: Run Prettier on src

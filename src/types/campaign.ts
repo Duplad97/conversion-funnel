@@ -1,16 +1,20 @@
-export type DeviceType = 'desktop' | 'mobile' | 'tablet'
+export type DeviceType = 'desktop' | 'mobile'
+
+export type FunnelStepType = 'teaser' | 'email' | 'success' | 'exit-intent' | 'coupon'
 
 export interface FunnelStep {
   id: string
   name: string
+  type: FunnelStepType
   views: number
   proceeds: number
+  description: string
 }
 
 export interface Campaign {
   id: string
   name: string
-  deviceType: DeviceType
+  device: DeviceType
   steps: FunnelStep[]
 }
 
@@ -23,6 +27,7 @@ export interface FunnelStepMetrics extends FunnelStep {
 export interface BiggestDropOff {
   stepId: string
   stepName: string
+  stepType: FunnelStepType
   dropOffRate: number
 }
 
@@ -42,4 +47,8 @@ export interface Insight {
   severity: InsightSeverity
   title: string
   message: string
+}
+
+export interface ConversionData {
+  campaigns: Campaign[]
 }

@@ -1,4 +1,10 @@
-import type { BiggestDropOff, Campaign, CampaignMetrics, FunnelStep, FunnelStepMetrics } from '@/types/campaign'
+import type {
+  BiggestDropOff,
+  Campaign,
+  CampaignMetrics,
+  FunnelStep,
+  FunnelStepMetrics,
+} from '@/types/campaign'
 
 const safeRate = (numerator: number, denominator: number): number => {
   if (denominator <= 0) {
@@ -23,9 +29,10 @@ export const getStepMetrics = (steps: FunnelStep[]): FunnelStepMetrics[] => {
 }
 
 export const getBiggestDropOff = (stepsWithMetrics: FunnelStepMetrics[]): BiggestDropOff => {
-  const fallback = {
+  const fallback: BiggestDropOff = {
     stepId: '',
     stepName: 'N/A',
+    stepType: 'teaser',
     dropOffRate: 0,
   }
 
@@ -33,11 +40,12 @@ export const getBiggestDropOff = (stepsWithMetrics: FunnelStepMetrics[]): Bigges
     return fallback
   }
 
-  const worstStep = stepsWithMetrics.reduce((currentWorst, step) => {
+  const worstStep = stepsWithMetrics.reduce<BiggestDropOff>((currentWorst, step) => {
     if (step.dropOffRate > currentWorst.dropOffRate) {
       return {
         stepId: step.id,
         stepName: step.name,
+        stepType: step.type,
         dropOffRate: step.dropOffRate,
       }
     }

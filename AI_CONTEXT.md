@@ -19,7 +19,7 @@ The application should make it easy to:
 - Vue 3
 - Vue Router
 - TypeScript
-- Material UI (MUI)
+- Vuetify 4
 - Vite
 
 No backend should be implemented.

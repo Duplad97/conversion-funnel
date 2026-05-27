@@ -42,41 +42,41 @@ onMounted(() => {
 </script>
 
 <template>
-  <section class="page-header">
-    <h1>Campaign Funnel Analytics</h1>
-    <p>Select a campaign to inspect funnel performance and identify where users drop off.</p>
-  </section>
+  <v-row class="mb-4" align="center" justify="space-between">
+    <v-col cols="12" md="8">
+      <div class="page-eyebrow">Campaign browser</div>
+      <h1 class="page-title">Campaign Funnel Analytics</h1>
+      <p class="page-subtitle">
+        Select a campaign to inspect funnel performance and identify where users drop off.
+      </p>
+    </v-col>
+  </v-row>
 
-  <p v-if="isLoading" class="status">Loading campaigns...</p>
-  <p v-else-if="errorMessage" class="status status--error">{{ errorMessage }}</p>
+  <v-progress-linear v-if="isLoading" indeterminate color="primary" class="mb-4" />
+
+  <v-alert v-else-if="errorMessage" color="error" variant="tonal" border="start" class="mb-4">
+    {{ errorMessage }}
+  </v-alert>
+
   <CampaignList v-else :items="campaignOverview" @select="openCampaign" />
 </template>
 
 <style scoped>
-.page-header {
-  margin-bottom: 1rem;
+.page-eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.75rem;
+  color: rgba(var(--v-theme-on-surface), 0.65);
+  margin-bottom: 0.35rem;
 }
 
 h1 {
-  margin: 0;
-  color: var(--text-primary);
   font-size: clamp(1.45rem, 2.3vw, 1.9rem);
+  line-height: 1.15;
+  margin: 0;
 }
 
 p {
-  color: var(--text-secondary);
   margin: 0.4rem 0 0;
-}
-
-.status {
-  border: 1px solid var(--border-color);
-  background: var(--surface);
-  border-radius: 12px;
-  padding: 0.8rem;
-}
-
-.status--error {
-  border-color: #f5a2a2;
-  background: #fff4f4;
 }
 </style>

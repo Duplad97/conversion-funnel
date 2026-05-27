@@ -34,6 +34,14 @@ const insights = computed(() => {
   return generateInsights(campaign.value, metrics.value)
 })
 
+const biggestDropOffText = computed(() => {
+  if (!metrics.value) {
+    return ''
+  }
+
+  return `${metrics.value.biggestDropOff.stepName} (${(metrics.value.biggestDropOff.dropOffRate * 100).toFixed(1)}% drop-off)`
+})
+
 const loadCampaign = async (): Promise<void> => {
   isLoading.value = true
   campaign.value = await getCampaignById(campaignId.value)
@@ -50,61 +58,34 @@ onMounted(() => {
 </script>
 
 <template>
-  <button class="back-link" type="button" @click="backToCampaigns">Back to campaigns</button>
+  <v-btn class="mb-4" variant="text" color="primary" @click="backToCampaigns">
+    Back to campaigns
+  </v-btn>
 
-  <p v-if="isLoading" class="status">Loading campaign details...</p>
+  <v-progress-linear v-if="isLoading" indeterminate color="primary" class="mb-4" />
 
   <section v-else-if="campaign && metrics" class="details-layout">
     <MetricsSummary :campaign="campaign" :metrics="metrics" />
 
-    <div class="highlight">
-      Biggest drop-off: {{ metrics.biggestDropOff.stepName }}
-      ({{ (metrics.biggestDropOff.dropOffRate * 100).toFixed(1) }}% drop-off)
-    </div>
+    <v-alert color="warning" variant="tonal" border="start" prominent>
+      Biggest drop-off: {{ biggestDropOffText }}
+    </v-alert>
 
-    <FunnelView :steps="metrics.stepsWithMetrics" :biggest-drop-off-step-id="metrics.biggestDropOff.stepId" />
+    <FunnelView
+      :steps="metrics.stepsWithMetrics"
+      :biggest-drop-off-step-id="metrics.biggestDropOff.stepId"
+    />
     <InsightPanel :insights="insights" />
   </section>
 
-  <p v-else class="status status--error">
+  <v-alert v-else color="error" variant="tonal" border="start">
     Campaign not found. It may have been removed from the static dataset.
-  </p>
+  </v-alert>
 </template>
 
 <style scoped>
-.back-link {
-  border: none;
-  background: none;
-  color: var(--accent-ink);
-  font-weight: 700;
-  cursor: pointer;
-  margin-bottom: 0.8rem;
-  padding: 0;
-}
-
 .details-layout {
   display: grid;
   gap: 0.9rem;
-}
-
-.highlight {
-  border: 1px solid #f3c783;
-  background: #fff8ec;
-  color: #5d3f07;
-  border-radius: 12px;
-  padding: 0.8rem;
-  font-weight: 700;
-}
-
-.status {
-  border: 1px solid var(--border-color);
-  background: var(--surface);
-  border-radius: 12px;
-  padding: 0.8rem;
-}
-
-.status--error {
-  border-color: #f5a2a2;
-  background: #fff4f4;
 }
 </style>

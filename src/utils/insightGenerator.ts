@@ -2,24 +2,26 @@ import type { Campaign, CampaignMetrics, Insight } from '@/types/campaign'
 
 export const generateInsights = (campaign: Campaign, metrics: CampaignMetrics): Insight[] => {
   const insights: Insight[] = []
-  const worstStepName = metrics.biggestDropOff.stepName.toLowerCase()
+  const worstStepType = metrics.biggestDropOff.stepType
   const worstDropOff = metrics.biggestDropOff.dropOffRate
 
-  if (worstStepName.includes('email') && worstDropOff >= 0.6) {
+  if (worstStepType === 'email' && worstDropOff >= 0.6) {
     insights.push({
       id: 'email-dropoff',
       severity: 'warning',
       title: 'High drop-off on email step',
-      message: 'Consider simplifying the email form by reducing required fields and clarifying value.',
+      message:
+        'Consider simplifying the email form by reducing required fields and clarifying value.',
     })
   }
 
-  if (worstStepName.includes('teaser') && worstDropOff >= 0.5) {
+  if (worstStepType === 'teaser' && worstDropOff >= 0.5) {
     insights.push({
       id: 'teaser-dropoff',
       severity: 'warning',
       title: 'Large drop-off on teaser',
-      message: 'Strengthen the value proposition and headline so users understand the immediate benefit.',
+      message:
+        'Strengthen the value proposition and headline so users understand the immediate benefit.',
     })
   }
 
@@ -38,7 +40,8 @@ export const generateInsights = (campaign: Campaign, metrics: CampaignMetrics): 
       id: 'healthy-flow',
       severity: 'success',
       title: 'Campaign is performing well',
-      message: 'Conversion is stable across all steps. This campaign can be a reference for future tests.',
+      message:
+        'Conversion is stable across all steps. This campaign can be a reference for future tests.',
     })
   }
 

@@ -23,21 +23,15 @@ const onSelect = (campaignId: string): void => {
 </script>
 
 <template>
-  <section class="campaign-list">
-    <CampaignCard
-      v-for="item in items"
-      :key="item.campaign.id"
-      :campaign="item.campaign"
-      :metrics="item.metrics"
-      @select="onSelect(item.campaign.id)"
-    />
-  </section>
+  <v-row dense>
+    <v-col v-for="item in items" :key="item.campaign.id" cols="12" md="6" lg="4">
+      <CampaignCard
+        :campaign="item.campaign"
+        :metrics="item.metrics"
+        @select="onSelect(item.campaign.id)"
+      />
+    </v-col>
+  </v-row>
 </template>
 
-<style scoped>
-.campaign-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 1rem;
-}
-</style>
+<style scoped></style>
